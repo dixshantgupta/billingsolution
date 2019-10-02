@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Billing Solution</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static "css/baseinnercss.css" %}">
+<style media="screen">
+.inline {
+display: inline;
+}
+</style>
+  </head>
+  <body>
+    <!-- Include the above in your HEAD tag ---------->
+    <div class="row">
+
+    <div class = "col-md-3">
+    <div class="nav-side-menu">
+        <div class="brand">BILLING SOLUTION</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+            <div class="menu-list">
+
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li>
+                      <a href="{% url 'UserApp:dashboard' %}">
+                      <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                      </a>
+                    </li>
+
+                    <li  data-toggle="collapse" data-target="#item" class="collapsed active">
+                      <i class="fa fa-gift fa-lg"></i> Manage Item <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu" id="item">
+                        <li><a href="{% url 'UserApp:cat-add' %}">Add Category</a></li>
+                        <li><a href="{% url 'UserApp:cat-list' %}">View,Update & Delete Category</a></li>
+                        <li><a href="{% url 'UserApp:item-add' %}">Add Item</a></li>
+                        <li><a href="{% url 'UserApp:item-list' %}">View,Update & Delete Item </a></li>
+                    </ul>
+
+
+                    <li data-toggle="collapse" data-target="#customer" class="collapsed">
+                      <a href="#"><i class="fa fa-globe fa-lg"></i> Manage Customer <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu" id="customer">
+                      <li><a href="{% url 'UserApp:customer-add' %}">Add Customer</a></li>
+                      <li><a href="{% url 'UserApp:customer-list' %}">View,Update & Delete Customer </a></li>
+                    </ul>
+
+
+                    <li data-toggle="collapse" data-target="#bill" class="collapsed">
+                      <a href="#"><i class="fa fa-car fa-lg"></i> Manage Invoice <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu" id="bill">
+                      <li><a href="{% url 'UserApp:create_invoice' %}">Generate Invoice </a></li>
+                      <li><a href="{% url 'UserApp:customerinvoice-list' %}">View Invoice</a></li>
+                    </ul>
+
+
+                     <li>
+                      <a href="{% url 'UserApp:profile-list' %}">
+                      <i class="fa fa-user fa-lg"></i> Profile
+                      </a>
+                      </li>
+                     <li>
+                      <a href="{% url 'UserApp:logoutpage' %}">
+                      <i class="fa fa-users fa-lg"></i> Logout
+                      </a>
+                    </li>
+                    <footer class="page-footer font-medium">
+                      <div class="footer-copyright text-center py-3 fo">
+                        © 2019 Copyright BILLINGSOLUTION
+                        <br>
+                        Contact us - +01165656528 or
+                        Email us - contact@billingsolution.com
+                      </div>
+                    </footer>
+                </ul>
+         </div>
+    </div>
+  </div>
+  <div class = "col-md-9">
+      <div class="jumbotron">
+        <div id="body">
+        {% block body_block %}
+        {% endblock %}
+    </div>
+    </div>
+  </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <!-- Latest compiled and minified JavaScript -->
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

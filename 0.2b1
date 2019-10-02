@@ -1,0 +1,24 @@
+Collecting xhtml2pdf
+  Downloading https://files.pythonhosted.org/packages/d1/94/a9b4e0ecb472f4d2bcb277524b586d9c8ee6c50745614f1b340c69bf2a3e/xhtml2pdf-0.2.3.tar.gz (99kB)
+Collecting html5lib>=1.0 (from xhtml2pdf)
+  Downloading https://files.pythonhosted.org/packages/a5/62/bbd2be0e7943ec8504b517e62bab011b4946e1258842bc159e5dfde15b96/html5lib-1.0.1-py2.py3-none-any.whl (117kB)
+Collecting pyPdf2 (from xhtml2pdf)
+  Downloading https://files.pythonhosted.org/packages/b4/01/68fcc0d43daf4c6bdbc6b33cc3f77bda531c86b174cac56ef0ffdb96faab/PyPDF2-1.26.0.tar.gz (77kB)
+Collecting Pillow (from xhtml2pdf)
+  Downloading https://files.pythonhosted.org/packages/ae/96/6f83deebfcd20a5d4ad35e4e989814a16559d8715741457e670aae1a5a09/Pillow-6.1.0-cp37-cp37m-win_amd64.whl (2.0MB)
+Collecting reportlab>=3.0 (from xhtml2pdf)
+  Downloading https://files.pythonhosted.org/packages/72/a7/5c88a2c9c3b82ba177ee8a1bfddb3a9c6ca80fa80a80e197afdaf04b1579/reportlab-3.5.23-cp37-cp37m-win_amd64.whl (2.2MB)
+Collecting six (from xhtml2pdf)
+  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+Collecting webencodings (from html5lib>=1.0->xhtml2pdf)
+  Downloading https://files.pythonhosted.org/packages/f4/24/2a3e3df732393fed8b3ebf2ec078f05546de641fe1b667ee316ec1dcf3b7/webencodings-0.5.1-py2.py3-none-any.whl
+Building wheels for collected packages: xhtml2pdf, pyPdf2
+  Building wheel for xhtml2pdf (setup.py): started
+  Building wheel for xhtml2pdf (setup.py): finished with status 'done'
+  Stored in directory: C:\Users\HP\AppData\Local\pip\Cache\wheels\c3\22\d6\fb20c4c532e9eb3b43fe30df5242c8ebaae20d1a6c4bcfa7b9
+  Building wheel for pyPdf2 (setup.py): started
+  Building wheel for pyPdf2 (setup.py): finished with status 'done'
+  Stored in directory: C:\Users\HP\AppData\Local\pip\Cache\wheels\53\84\19\35bc977c8bf5f0c23a8a011aa958acd4da4bbd7a229315c1b7
+Successfully built xhtml2pdf pyPdf2
+Installing collected packages: webencodings, six, html5lib, pyPdf2, Pillow, reportlab, xhtml2pdf
+Successfully installed Pillow-6.1.0 html5lib-1.0.1 pyPdf2-1.26.0 reportlab-3.5.23 six-1.12.0 webencodings-0.5.1 xhtml2pdf-0.2.3

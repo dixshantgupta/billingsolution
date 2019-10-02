@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "baseinner.html" %}
+{% block body_block %}
+<h1>CATEGORY</h1>
+<table class="table table-striped">
+<tr>
+  <th>CATEGORY</th>
+  <th>UPDATE</th>
+  <th>DELETE</th>
+</tr>
+  {% for obj in object_list %}
+        {% if request.user == obj.username %}
+        <tr>
+            <td>{{ obj.category }}</td>
+            <td><a href="{% url 'UserApp:catinfo-update' obj.id %}">Udate</a></td>
+            <td><a href="{% url 'UserApp:catinfo-delete' obj.id %}">Delete</a></td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% endblock %}

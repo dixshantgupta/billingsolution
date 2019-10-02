@@ -1,0 +1,550 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>{{invoice}}</title>
+        <style type="text/css">
+  @page { size: landscape; }
+            body {
+                font-weight: 200;
+                font-size: 12px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .p1 {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+            .table1
+              {
+                border-collapse: collapse;
+                border: 1px solid black;
+                padding-top: 5px;
+              }
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+
+          <div class='details'>
+               <table class='table1'>
+                 <tr >
+                 <td style = "background-color:rgb(153, 185, 255);" colspan="10">
+                        <p style="font-size:18px;text-align:center;font-family:bookman old style; font-weight:bolder; text-transform:uppercase; margin-top:1px; margin-bottom:1px;"><b>TAX INVOICE</b></p>
+                        </td>
+                        </tr>
+
+
+
+                        <tr>
+                        <td colspan="5">
+                          <p style=" text-align:center; font-size:20px; font-weight:bolder; font-family:bookman old style;text-align:center;">{{firm_name|upper}}</p>
+                        </td>
+                        <td colspan="5">
+                        <p style="font-weight:bold; margin-bottom:0px; margin-top:2px;">{{firm_address|upper}} </p>
+                        <p style="font-weight:bold; margin-bottom:0px; margin-top:2px;">{{mobile_number}}|{{email}}</p>
+                        </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="5">
+                          <p style="margin-bottom:0px; margin-top:0px;"> GSTIN Number: {{gst_number_user}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> Invoice Number: {{invoice}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> Invoice Date: {{date}}<p>
+                            </td>
+                            <td colspan="5">
+                             <p style="margin-bottom:0px; margin-top:0px;"> Bank A/C Number : {{bank_account_number}}</p>
+                            <p style="margin-bottom:0px; margin-top:0px;"> Bank IFSC Code: {{bank_ifsc_code}}</p>
+                            <p style="margin-bottom:0px; margin-top:0px;"> Branch Name: {{bank_name}}-{{bank_branch_address}}</p>
+                              </td>
+
+                          </tr>
+
+                        <tr>
+                        <td style = "background-color:rgb(153, 185, 255);" colspan="5">
+                          <p style=" text-align:center;text-align:center;font-size:12px;">Details of Receiver (Billed to)</p>
+                        </td>
+                        <td style = "background-color:rgb(153, 185, 255);" colspan="5">
+                        <p style="text-align:center;text-align:center;font-size:12px;">Details of consignee (Shipped to)</p>
+                        </td>
+                        </tr>
+
+                          <tr>
+                          <td colspan="5">
+                          <p style="margin-bottom:0px; margin-top:0px;"> Name: {{customer}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> Address: {{address}}</p>
+                          
+                          <p style="margin-bottom:0px; margin-top:0px;"> State & Code: {{state}}-{{state_code}}<p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> GSTIN Number: {{gst_number}}<p>
+                            </td>
+                            <td colspan="5">
+                             <p style="margin-bottom:0px; margin-top:0px;"> Name: {{customer}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> Address: {{address}}</p>
+                          
+                          <p style="margin-bottom:0px; margin-top:0px;"> State & Code: {{state}}-{{state_code}}<p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> GSTIN Number: {{gst_number}}<p>
+                              </td>
+
+                          </tr>
+
+
+
+                          <tr>
+                          <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> SNo</p>
+                            </td>
+                           <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">Product Description</p>
+                            </td>
+                            <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> HSN Code	</p>
+                            </td>
+                            <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Quantity</p>
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> (Unit)</p>
+                            </td>
+                            <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Rate</p>
+                            </td>
+                            <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Discount</p>
+                            </td>
+                            <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Amount(A)</p>
+                            </td>
+                            <td style = "background-color:rgb(153, 185, 255);"  colspan="2">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center; "> IGST (B)</p>
+                          <table>
+                          <tr>
+                          <td>
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Rate</p>
+                          </td>
+                          <td>
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Amount</p>
+
+                        </td>
+                          </tr>
+                          </table>                            </td>
+                             
+                             <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> TOTAL (A+B+C)</p>
+                            </td>
+            
+                          </tr>
+
+
+
+
+                       
+                          <tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{sno1}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name1|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn1}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty1}}({{unit1|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate1}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount1}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount1}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst1}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate1}}</p>
+
+                        </td>
+
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total1}} </p>
+                            </td>
+            
+                          </tr>
+
+<tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{sno2}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name2|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn2}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty2}}({{unit2|upper}})	</p>
+                          
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate2}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount2}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount2}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst2}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate2}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total2}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+<tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">  {{sno3}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name3|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn3}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty3}}({{unit3|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate3}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount3}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount3}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst3}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate3}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total3}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+
+
+                          <tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">  {{sno4}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name4|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn4}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty4}}({{unit4|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate4}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount4}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount4}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst4}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate4}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total4}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+
+
+                          <tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">  {{sno5}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name5|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn5}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty5}}({{unit5|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate5}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount5}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount5}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst5}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate5}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total5}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+
+                          <tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">  {{sno6}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name6|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn6}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty6}} ({{unit6|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate6}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount6}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount6}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst6}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate6}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total6}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+
+
+
+                          <tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">  {{sno7}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name7|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn7}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty7}} ({{unit7|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate7}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount7}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount7}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst7}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate7}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total7}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+                          <tr>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">  {{sno8}}	</p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{item_name8|upper}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{hsn8}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{qty8}} ({{unit6|upper}})	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{rate8}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{discount8}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{ammount8}}	</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst8}}	</p>
+                          </td>
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{cgst_rate8}}</p>
+
+                        </td>
+                             
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total8}} </p>
+                            </td>
+            
+                          </tr>
+
+<tr>
+                          <td style = "background-color:rgb(153, 185, 255);"  colspan="3">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Total </p>
+                            </td>
+                           <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{total_qty}}		</p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> </p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> </p>
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> </p>
+                            </td>
+                
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total_rate}}		</p>
+                            </td>
+                            
+                          <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> </p>
+
+                        </td>
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total_gst_rate}}	</p>
+                          </td>
+                            </td>
+                             <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total_total}} </p>
+                            </td>
+            
+                          </tr>
+
+
+
+
+                          <tr>
+                          <td style = "background-color:rgb(153, 185, 255);"  colspan="3">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Total Amount In Words </p>
+                            </td>
+                           <td colspan="5">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;">{{num_to_word|upper}} RUPEES		</p>
+                            </td>
+                            
+                             <td style = "background-color:rgb(153, 185, 255);"  colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> Round Off </p>
+                            </td>
+                            <td colspan="1">
+                          <p style="margin-bottom:0px; margin-top:0px;text-align:center;"> {{total_round}} </p>
+                            </td>
+            
+                          </tr>
+
+
+ <tr>
+                          <td colspan="5">
+                          <p style="margin-bottom:0px; margin-top:0px;"> Terms & Conditions:</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> 1. Goods once sold will not be taken back. </p>
+                          
+                          <p style="margin-bottom:0px; margin-top:0px;"> 2. Sum of Rs. 1000/- will be charged on account of dishonored cheque along with interest @ 24% p.a.<p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> 3. All claims are subject to delhi jurisdiction only.<p>
+                            </td>
+                            <td colspan="5">
+                             <p style="margin-bottom:0px; margin-top:0px;"> Total Amount Before Tax:{{total_rate}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> Add IGST:{{total_gst_rate}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px;"> Total Amount After Tax:{{total_total}}</p>
+                          <p style="margin-bottom:0px; margin-top:0px; text-align:right;"> Authorised signatory & Common Seal</p>
+                              </td>
+
+                          </tr>
+
+
+
+                        </table>
+              
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends "baseinner.html" %}
+{% block body_block %}
+<h1>PROFILE</h1>
+
+<table class="table">
+  {% for obj in object_list %}
+        {% if request.user == obj.username %}
+        <tr>
+          <th>NAME</th>
+          <td>{{ obj.name }}</td>
+        </tr>
+        <tr>
+          <th>FIRM NAME</th>
+          <td>{{ obj.firm_name }}</td>
+        </tr>
+        <tr>
+          <th>  FIRM ADDRESS</th>
+          <td>{{ obj.firm_address }}</td>
+        </tr>
+        <tr>
+          <th>CONTACT NUMBER</th>
+          <td>{{ obj.mobile_number }}</td>
+        </tr>
+        <tr>
+          <th>GST NUMBER</th>
+          <td>{{ obj.gst_number }}</td>
+        </tr>
+        <tr>
+          <th>PAN NUMBER</th>
+          <td>{{ obj.pan_number }}</td>
+        </tr>
+        <tr>
+          <th>BANK NAME</th>
+          <td>{{ obj.bank_name }}</td>
+        </tr>
+        <tr>
+          <th>BANK ACCOUNT NUMBER</th>
+          <td>{{ obj.bank_account_number }}</td>
+        </tr>
+        <tr>
+          <th>BANK IFSC CODE</th>
+          <td>{{ obj.bank_ifsc_code }}</td>
+        </tr>
+        <tr>
+          <th>BANK BRANCH ADDRESS</th>
+          <td>{{ obj.bank_branch_address }}</td>
+        </tr>
+        <tr>
+          <td><a href="{% url 'UserApp:profile-update' obj.id %}"> Click Here To Edit Details </a></td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+  </table>
+{% endblock %}

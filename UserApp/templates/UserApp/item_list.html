@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "baseinner.html" %}
+{% block body_block %}
+<h1>ITEM</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>ITEM ID</th>
+    <th>CATEGORY</th>
+    <th>HSN CODE</th>
+    <th>ITEM NAME</th>
+    <th>GST</th>
+    <th>MRP</th>
+    <th>BUY PRICE</th>
+    <th>SELL PRICE</th>
+    <th>UNIT</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  {% for obj in object_list %}
+        {% if request.user == obj.username %}
+        <tr>
+          <td>{{ obj.id }}</td>
+          <td>{{ obj.category }}</td>
+          <td>{{ obj.hsncode }}</td>
+          <td>{{ obj.item_name }}</td>
+          <td>{{ obj.gst }}</td>
+          <td>{{ obj.mrp }}</td>
+          <td>{{ obj.buy_price }}</td>
+          <td>{{ obj.sell_price }}</td>
+          <td>{{ obj.unit }}</td>
+          <td><a href="{% url 'UserApp:iteminfo-update' obj.id %}">Update </a></td>
+          <td><a href="{% url 'UserApp:iteminfo-delete' obj.id %}">Delete </a></td>
+          </tr>
+        {% endif %}
+    {% endfor %}
+  </table>
+{% endblock %}

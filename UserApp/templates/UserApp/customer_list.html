@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "baseinner.html" %}
+{% block body_block %}
+<h1>CUSTOMER</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>NAME</th>
+    <th>ADDRESS</th>
+    <th>STATE</th>
+    <th>STATE CODE</th>
+    <th>GST NUMBER</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  {% for obj in object_list %}
+        {% if request.user == obj.username %}
+        <tr>
+          <td>{{ obj.name }}</td>
+          <td>{{ obj.address }}</td>
+          <td>{{ obj.state }}</td>
+          <td>{{ obj.state_code }}</td>
+          <td>{{ obj.gst_number }}</td>
+          <td><a href="{% url 'UserApp:customerinfo-update' obj.id %}">Update </a></td>
+          <td><a href="{% url 'UserApp:customerinfo-delete' obj.id %}">Delete </a></td>
+          </tr>
+        {% endif %}
+    {% endfor %}
+  </table>
+{% endblock %}

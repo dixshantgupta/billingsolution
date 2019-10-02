@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+{% extends "baseinner.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<form class="form-horizontal" method="POST" id="generateForm" data-item-url="{% url 'UserApp:ajax_load_item' %}" data-rate-url = "{% url 'UserApp:ajax_load_rate' %}"  target="_blank" novalidate>
+   {% csrf_token %}
+  <center><h2 class="text-white bg-dark">INVOICE NUMBER : {{invoice_no}}</h2></center>
+  <center><h4 class="text-white bg-dark">CUSTOMER</h4></center>
+  <br>
+  <table class="table">
+    <tr>
+  <th>INVOICE TO :</th> <th>{{customer_form.customer}} </th>
+  </tr>
+  <tr>
+    <th>PO NO(If Any) :</th> <th>{{customer_form.po_no}}</th>
+  </tr>
+  </table>
+    <br>
+  <center><h4 class="text-white bg-dark">ITEM</h4></center>
+
+    <table class="table">
+      <tr>
+        <th>CATEGORY</th>
+        <th>ITEM NAME</th>
+        <th>RATE</th>
+        <th>QUANTITY</th>
+        <th>DISCOUNT(in %)</th>
+        <th>ADD MORE ITEM</th>
+      </tr>
+  </table>
+{{ formset.management_form }}
+{% for form in formset %}
+<div class="row form-row spacer">
+    <div class="col-4">
+        <div class="input-group">
+          <table class="table">
+            <tr>
+              <th></th>
+            <th>{{form.category}}</th>
+              <th>{{form.item_name}}  </th>
+              <th>{{form.rate}}  </th>
+              <th>{{form.quantity}}  </th>
+              <th>{{form.discount}}  </th>
+              <th><div class="input-group-append">
+              <button class="btn btn-success add-form-row">+</button>
+              </div></th>
+              </tr>
+              </table>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<center><b>  <p class="inline">TOTAL NUMBER OF ITEM:</p> <p class="inline" id = "sno">1</p> </b></center>
+  <small style="color:red;">Please fill quantity and discount. if discount is zero then write 0.</small>
+<div class="row spacer">
+    <div class="col-4 offset-4">
+        <button type="submit" class="btn btn-block btn-primary" name="create">Generate Invoice</button>
+    </div>
+</div>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+  // ajax
+  $("#id_form-0-category").change(function () {
+    var url = $("#generateForm").attr("data-item-url");  // get the url of the `category` view
+    var categoryId = $(this).val();  // get the selected categoryID from the HTML input
+    $.ajax(
+      {                // initialize an AJAX request
+      url: url,                   // set the url of the request (= localhost:8000/hr/ajax/load-category)
+      data: {
+        'category': categoryId       // add the categoryId id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `item` view function
+        $("#id_form-0-item_name").html(data);  // replace the contents of the item input with the data that came from the server
+      }
+    });
+  });
+  $("#id_form-0-item_name").change(function () {
+    var url = $("#generateForm").attr("data-rate-url");  // get the url of the `category` view
+    //var categoryId = $("#id_form-0-category").val();
+    var itemId = $("#id_form-0-item_name").val();  // get the selected categoryID from the HTML input
+    $.ajax(
+      {                // initialize an AJAX request
+      url: url,                   // set the url of the request (= localhost:8000/hr/ajax/load-category)
+      data: {
+        //'category': categoryId,
+        'item': itemId       // add the categoryId id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `item` view function
+        document.getElementById("id_form-0-rate").value = parseFloat(data);
+      //  $("#id_form-0-rate").html(data);  // replace the contents of the item input with the data that came from the server
+      }
+    });
+  });
+function updateElementIndex(el, prefix, ndx) {
+    var id_regex = new RegExp('(' + prefix + '-\\d+)');
+    var replacement = prefix + '-' + ndx;
+    if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+    if (el.id) el.id = el.id.replace(id_regex, replacement);
+    if (el.name) el.name = el.name.replace(id_regex, replacement);
+}
+function cloneMore(selector, prefix) {
+    var newElement = $(selector).clone(true);
+    var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
+    if(total!=8)
+    {
+    newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+        var name = $(this).attr('name')
+        if(name) {
+            name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+            var id = 'id_' + name;
+            $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+        }
+    });
+    newElement.find('label').each(function() {
+        var forValue = $(this).attr('for');
+        if (forValue) {
+          forValue = forValue.replace('-' + (total-1) + '-', '-' + total + '-');
+          $(this).attr({'for': forValue});
+        }
+    });
+    t = total++;
+    document.getElementById("sno").innerHTML = t+1;
+    $('#id_' + prefix + '-TOTAL_FORMS').val(total);
+    $(selector).after(newElement);
+    var conditionRow = $('.form-row:not(:last)');
+    conditionRow.find('.btn.add-form-row')
+    .removeClass('btn-success').addClass('btn-danger')
+    .removeClass('add-form-row').addClass('remove-form-row')
+    .html('-');
+  var str1 = "#id_form-";
+  var num = t;
+  var str2 = "-category";
+  var res = str1.concat(num,str2);
+    $(res).change(function () {
+      var url = $("#generateForm").attr("data-item-url");  // get the url of the `category` view
+      var categoryId = $(this).val();  // get the selected categoryID from the HTML input
+         var stri1 = "#id_form-";
+         var numi = t;
+         var stri2 = "-item_name";
+         var resi = stri1.concat(numi,stri2);
+      $.ajax(
+        {                // initialize an AJAX request
+        url: url,                   // set the url of the request (= localhost:8000/hr/ajax/load-category)
+        data: {
+          'category': categoryId       // add the categoryId id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `item` view function
+          $(resi).html(data);  // replace the contents of the item input with the data that came from the server
+        }
+      });
+    });
+    var itemlink = "-item_name";
+    var res2 = str1.concat(t,itemlink);
+    $(res2).change(function () {
+      var url = $("#generateForm").attr("data-rate-url");  // get the url of the `category` view
+      //var categoryId = $("#id_form-0-category").val();
+      var itemId = $(res2).val();  // get the selected categoryID from the HTML input
+      $.ajax(
+        {                // initialize an AJAX request
+        url: url,                   // set the url of the request (= localhost:8000/hr/ajax/load-category)
+        data: {
+          //'category': categoryId,
+          'item': itemId       // add the categoryId id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `item` view function
+          var strr = "id_form-";
+          var ratelink = "-rate";
+          var res3 = strr.concat(t,ratelink);
+          document.getElementById(res3).value = parseFloat(data);
+        //  $("#id_form-0-rate").html(data);  // replace the contents of the item input with the data that came from the server
+        }
+      });
+    });
+    return false;
+}
+}
+function deleteForm(prefix, btn) {
+    var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+    if (total > 1){
+        btn.closest('.form-row').remove();
+        var forms = $('.form-row');
+        $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+        for (var i=0, formCount=forms.length; i<formCount; i++) {
+            $(forms.get(i)).find(':input').each(function() {
+                updateElementIndex(this, prefix, i);
+            });
+        }
+    }
+    return false;
+}
+$(document).on('click', '.add-form-row', function(e){
+    e.preventDefault();
+    cloneMore('.form-row:last', 'form');
+    return false;
+});
+$(document).on('click', '.remove-form-row', function(e){
+    e.preventDefault();
+    deleteForm('form', $(this));
+    return false;
+});
+
+</script>
+{% endblock %}

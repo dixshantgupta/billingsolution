@@ -1,0 +1,19 @@
+body{
+  width: 100vw;
+  height: auto;
+  background: linear-gradient(#b35900, #c2c2f0);
+}
+.card
+{
+  width: 22rem;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:50px;
+}
+.fo{
+  background: black;
+  color:white;
+  height: 100%;
+  margin-top: 30px;
+}

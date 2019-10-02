@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "baseinner.html" %}
+{% block body_block %}
+<center><h1>ITEM IN INVOICE</h1></center>
+<table class="table table-striped">
+  <tr>
+    <th>SNO</th>
+    <th>CATEGORY</th>
+    <th>ITEM NAME</th>
+    <th>RATE</th>
+    <th>QUANTITY</th>
+    <th>DISCOUNT</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+{{invoice_details}}
+{{invoice_details.item_name}}
+{{invoice_details.invoice}}
+{{invoice_details.id}}
+
+  {% for inv in invoice_details.invoices.all %}
+  <p>here</p>
+        <tr>
+          <td>{{ inv.sno }}</td>
+          <td>{{ inv.category }}</td>
+          <td>{{ inv.item_name }}</td>
+          <td>{{ inv.rate }}</td>
+          <td>{{ inv.quantity }}</td>
+          <td>{{ inv.discount }}</td>
+          <td><a href="#">Update </a></td>
+          <td><a href="#">Delete</a></td>
+          </tr>
+        {% endfor %}
+  </table>
+{% endblock %}

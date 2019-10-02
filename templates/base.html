@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Billing Solution</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static "css/base.css" %}">
+  </head>
+  <body>
+    <div id="container">
+    <div id="header">
+    <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'homepage' %}">BILLING SOLUTION</a>
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{% url 'UserApp:register' %}">Register</a>
+    <a class="nav-item nav-link" href="{% url 'UserApp:loginpage' %}">Login</a>
+    </div>
+    </nav>
+  </div>
+  <div id="body">
+      <div class="jumbotron">
+      <div class="card">
+        <div class="card-body">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+</div>
+      <br>
+<div id="footer">
+    <footer class="page-footer font-medium">
+      <div class="footer-copyright text-center py-3">
+        © 2019 Copyright BILLINGSOLUTION
+        <br>
+        Contact us - +01165656528 or
+        Email us - contact@billingsolution.com
+      </div>
+    </footer>
+
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

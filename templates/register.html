@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<div class="content_section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <center>  <legend class="border-bottom mb-4">REGISTER HERE</legend> </center>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-primary btn-mid" type="submit">Submit</button>
+        </div>
+        <small> Already Have Account? <a href="{% url 'UserApp:loginpage' %}">Sign In Here</a> </small>
+    </form>
+  </div>
+{% endblock %}
